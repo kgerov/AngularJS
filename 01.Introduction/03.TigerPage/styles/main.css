@@ -1,0 +1,20 @@
+section > div {
+	padding: 30px;
+	background-color: #CACACA;
+	width: 400px;
+}
+
+section div > div {
+	display: inline-block;
+	margin-right: 30px;
+	width: 40%;
+}
+
+section img {
+	width: 100%;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0;
+}

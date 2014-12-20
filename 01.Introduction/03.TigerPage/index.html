@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript"  src="libs/angular.min.js" defer></script>
+		<script type="text/javascript" src="scripts/app.js" defer></script>
+		<script type="text/javascript" src="scripts/controller/tiger.js" defer></script>
+		<link rel="stylesheet" type="text/css" href="styles/main.css">
+		<title>Tiger Page</title>
+	</head>
+	<body ng-app="TigerApp">
+		<section ng-controller="TigerPage">
+			<div>
+				<div>
+					<h1 ng-style="title">Tiger</h1>
+					<ul ng-style="text">
+						<li><strong>Name: </strong>{{tiger.name}}</li>
+						<li><strong>Born: </strong>{{tiger.born}}</li>
+						<li><strong>Birth date: </strong>{{tiger.BirthDate}}</li>
+						<li><strong>Live: </strong>{{tiger.live}}</li>
+					</ul>
+				</div>
+				<div>
+					<img ng-src="{{tiger.url}}" alt="tiger-pic">
+				</div>
+			</div>
+		</section>
+
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript"  src="libs/angular.min.js" defer></script>
+		<script type="text/javascript" src="scripts/app.js" defer></script>
+		<script type="text/javascript" src="scripts/factory.js" defer></script>
+		<script type="text/javascript" src="scripts/controller/image.js" defer></script>
+		<link rel="stylesheet" type="text/css" href="styles/main.css">
+		<title>Student Page</title>
+	</head>
+	<body ng-app="PhotoApp">
+		<div ng-controller="ImagePage">
+			<input name="image" placeholder="Enter url..." ng-model="urlNew" ng-keyup="DisplayImg(urlNew)">
+			<img ng-src="{{url}}" alt="">
+		</div>
+
+		<p>Test:</p>
+		<ul>
+			<li>http://www.appsurfer.com/assets/public/AS_logo_512px-1fd26fc091e044041a315978d9c966bb.png</li>
+			<li>http://www.bravopavlikeni.com/wp-content/uploads/bravo_logo_outline.png</li>	
+		</ul>
+	</body>
+</html>

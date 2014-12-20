@@ -2,10 +2,31 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="">
-		<title></title>
+		<script type="text/javascript"  src="libs/angular.min.js" defer></script>
+		<script type="text/javascript" src="scripts/app.js" defer></script>
+		<script type="text/javascript" src="scripts/controller/students.js" defer></script>
+		<link rel="stylesheet" type="text/css" href="styles/main.css">
+		<title>Student Page</title>
 	</head>
-	<body>
-		
+	<body ng-app="StudentsApp">
+		<div ng-controller="StudentPage">
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Photo</th>
+					<th>Grade</th>
+					<th>School</th>
+					<th>Teacher</th>
+				</tr>
+				<tr>
+					<td>{{student.name}}</td>
+					<td><img ng-src="{{student.photo}}" alt=""></td>
+					<td>{{student.grade}}</td>
+					<td>{{student.school}}</td>
+					<td>{{student.teacher}}</td>
+				</tr>
+			</table>
+		</div>
+
 	</body>
 </html>
