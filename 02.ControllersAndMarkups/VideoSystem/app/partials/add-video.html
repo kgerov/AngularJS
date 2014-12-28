@@ -1,0 +1,58 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<h1>Add Video</h1>
+		</div>
+	</div>
+	<form name="addVideoForm">
+		<div class="row" id="add-form">
+			<div class="col-md-6">
+				<div class="form-group has-feedback" ng-class="{ 'has-error' : (addVideoForm.titleInput.$error.required && addVideoForm.titleInput.$dirty), 'has-success' : addVideoForm.titleInput.$valid}">
+					<input type="text" class="form-control" name="titleInput" placeholder="Title" required="required" ng-model="newVideo.title" aria-describedby="inputSuccess2Status">
+					<div ng-show="addVideoForm.titleInput.$valid">
+						<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+						<span id="inputSuccess2Status" class="sr-only">(success)</span>
+					</div>
+					<div ng-show="addVideoForm.titleInput.$error.required && addVideoForm.titleInput.$dirty">
+						<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+						<span id="inputError2Status" class="sr-only">(error)</span>
+					</div>
+				</div>
+				<div class="form-group has-feedback" ng-class="{ 'has-error' : (addVideoForm.categoryInput.$error.required && addVideoForm.categoryInput.$dirty), 'has-success' : addVideoForm.categoryInput.$valid}">
+					<input type="text" class="form-control" placeholder="Category" required="required" ng-model="newVideo.category" name="categoryInput">
+					<div ng-show="addVideoForm.categoryInput.$valid">
+						<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+						<span id="inputSuccess2Status" class="sr-only">(success)</span>
+					</div>
+					<div ng-show="addVideoForm.categoryInput.$error.required && addVideoForm.categoryInput.$dirty">
+						<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+						<span id="inputError2Status" class="sr-only">(error)</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group" ng-class="{ 'has-error' : ((addVideoForm.urlInput.$error.required || addVideoForm.urlInput.$invalid) && addVideoForm.urlInput.$dirty), 'has-success' : addVideoForm.urlInput.$valid}">
+					<input type="url" class="form-control" placeholder="URL" required="required" ng-model="newVideo.url" name="urlInput">
+					<div ng-show="addVideoForm.urlInput.$valid">
+						<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+						<span id="inputSuccess2Status" class="sr-only">(success)</span>
+					</div>
+					<div ng-show="(addVideoForm.urlInput.$error.required || addVideoForm.urlInput.$error.$invalid) && addVideoForm.urlInput.$dirty">
+						<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+						<span id="inputError2Status" class="sr-only">(error)</span>
+					</div>
+					<p ng-show="addVideoForm.urlInput.$error.url && addVideoForm.urlInput.$dirty">Invalid url</p>
+					<p ng-show="addVideoForm.urlInput.$error.required && addVideoForm.urlInput.$dirty">Url is required</p>
+				</div>
+				<div class="form-group">
+						<select class="form-control pull-right" id="subsSelect" required="required" ng-model="newVideo.haveSubtitles" name="subsInput">
+							<option value="" style="display:none" selected="selected">Does the video has subtitles?</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+				</div>
+			</div>
+		</div>
+		<button class="btn btn-primary pull-right" ng-click="addVideo(newVideo)" value="Save" ng-disabled="addVideoForm.titleInput.$error.required || addVideoForm.categoryInput.$error.required || (!addVideoForm.subsInput.$valid) || addVideoForm.urlInput.$error.required || addVideoForm.urlInput.$error.url">Submit Video</button>
+	</form>
+</div>

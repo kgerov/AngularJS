@@ -1,0 +1,82 @@
+<div class="container special">
+	<div class="row">
+		<div class="col-md-12 text-center section-title">
+			<h1>Video List</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2">
+			<div>
+				<h3>Search: </h3>
+				<input type="text" ng-model="videoFilterName.title">
+			</div>
+			<div>
+				<h3>Filters: </h3>
+				<label>Category</label>
+				<select ng-model="videoFilterCategory">
+					<option value="">All</option>
+					<option ng-repeat="video in videos" value="{{ video.category }}">{{ video.category }}</option>
+				</select><br>
+				<label>Date</label>
+				<select ng-model="videoFilterDate">
+					<option value="">All</option>
+					<option ng-repeat="video in videos" value="{{ video.date }}" >{{ video.date | date }}</option>
+				</select>
+				<label>Has subtitles: </label>
+				<select ng-model="videoFilterSubs">
+					<option value="">All</option>
+					<option ng-repeat="video in videos | unique:'haveSubtitles'" value="{{ video.haveSubtitles }}">{{ video.haveSubtitles | subtitles }}</option>
+				</select>
+			</div>
+			<div>
+				<h3>Sort by: </h3>
+				<select ng-model="orderSelector">
+					<option value="title">Title</option>
+					<option value="length">Length</option>
+					<option value="date">Date</option>
+					<option value="-subscribers">Subscribers</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="row">
+				<div class="col-md-6" ng-repeat="video in videos | filter:videoFilterName | filter:videoFilterCategory | filter: videoFilterSubs | filter: videoFilterDate | orderBy:orderSelector">
+					<div class="video-section">
+						<div class="video-title">{{ video.title }} | Category: {{ video.category }}</div>
+						<div class="video-content"><iframe ng-src="{{video.videoUrl | trusted }}" frameborder="0" allowfullscreen></iframe></div>
+						<div class="video-description">
+							<p>Length: {{ video.length }}</p>
+							<p>Subsribers: {{ video.subscribers }}</p>
+							<p>Date: {{ video.date | date}}</p>
+							<p>Have Subtitles: {{ video.haveSubtitles | subtitles }}</p>
+						</div>
+						<div>
+							<h3>Comments: </h3>
+							<ul>
+								<li ng-repeat="comment in video.comments">
+									<p>{{ comment.username }} - {{ comment.date | date }} </p>
+									<div class="row">
+										<div class="col-md-3">
+											<div ng-click="upVote(comment)">
+												<span class="glyphicon glyphicon-chevron-up"></span> 
+											</div>
+											<div class="badge badge-inverse icon-dark">
+												{{comment.likes}}
+											</div>
+											<div ng-click="downVote(comment)">
+												<span class="glyphicon glyphicon-chevron-down"></span>
+											</div>
+										</div>
+										<div class="col-md-9">
+											{{comment.content }}
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
